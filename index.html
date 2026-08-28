@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lane Drop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">ARCADE DRIVE</p>
+          <h1>Lane Drop</h1>
+        </div>
+        <div class="stats" aria-label="Game stats">
+          <div><span>Score</span><strong id="score">00000</strong></div>
+          <div><span>Best</span><strong id="best">00000</strong></div>
+          <div><span>Speed</span><strong id="speed">1.0x</strong></div>
+        </div>
+      </header>
+
+      <section class="game-card">
+        <div class="canvas-wrap">
+          <canvas id="game" aria-label="Top-down driving game"></canvas>
+          <div class="overlay" id="overlay">
+            <div class="overlay-panel">
+              <p class="eyebrow" id="overlay-kicker">READY?</p>
+              <h2 id="overlay-title">Drop into the lane.</h2>
+              <p id="overlay-copy">Dodge traffic, collect stars, and keep your cool.</p>
+              <button id="start-button">Start driving</button>
+            </div>
+          </div>
+        </div>
+        <footer class="controls">
+          <span><kbd>W</kbd><kbd>↑</kbd> Accelerate</span>
+          <span><kbd>A</kbd><kbd>←</kbd> <kbd>D</kbd><kbd>→</kbd> Steer</span>
+          <span><kbd>Space</kbd> Pause</span>
+        </footer>
+      </section>
+      <p class="tip">The road gets faster the longer you survive.</p>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
