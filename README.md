@@ -17,7 +17,7 @@ Open [`index.html`](./index.html) in a browser. No build step or dependencies ar
 - Endless scrolling road
 - Random traffic cars
 - Buses, box trucks, and petrol tankers with distinct designs and large labels
-- Rare BMW traffic with a visible roundel logo and unpredictable swerving
+- Rare rogue traffic with an original arrow emblem and unpredictable swerving
 - Collectible stars for bonus points
 - Increasing speed and score tracking
 - Best score saved in browser local storage

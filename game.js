@@ -56,7 +56,7 @@ function beginCrash(explosive = false) {
 }
 function spawnItem() {
   const lane = Math.floor(Math.random() * 3);
-  const bmw = Math.random() < 0.1;
+  const rogue = Math.random() < 0.1;
   const roll = Math.random();
   const type = roll < 0.12 ? 'bus' : roll < 0.25 ? 'truck' : roll < 0.33 ? 'tanker' : 'car';
   const dimensions = { bus: [38, 88], truck: [38, 72], tanker: [38, 88], car: [30, 52] }[type];
@@ -67,9 +67,9 @@ function spawnItem() {
     height: dimensions[1],
     color: type === 'bus' ? ['#e7b84f', '#e87552'][Math.floor(Math.random() * 2)] : type === 'truck' ? ['#b9c8c4', '#7194a3'][Math.floor(Math.random() * 2)] : type === 'tanker' ? '#d7d8ce' : ['#ff9067', '#7eb8ff', '#d8fa6d'][Math.floor(Math.random() * 3)],
     type,
-    bmw,
+    rogue,
     lane,
-    weave: bmw && Math.random() > .25,
+    weave: rogue && Math.random() > .25,
     phase: Math.random() * Math.PI * 2,
     sway: 0
   };
@@ -101,7 +101,7 @@ function update(dt) {
   state.spawn -= dt; if (state.spawn <= 0) { spawnItem(); state.spawn = Math.max(.5, .95 - state.distance / 180); }
   for (const item of traffic) {
     item.y += speed * dt * (item.type === 'bus' ? .92 : item.type === 'tanker' ? .86 : item.type === 'truck' ? .9 : 1);
-    if (item.bmw && item.weave) {
+    if (item.rogue && item.weave) {
       item.phase += dt * (2.3 + state.distance / 130);
       item.sway = Math.sin(item.phase) * laneWidth * .34;
       item.x = roadLeft + laneWidth * (item.lane + .5) + item.sway;
@@ -162,15 +162,12 @@ function drawCar(car) {
     ctx.fillStyle = '#c53f35'; ctx.font = '700 8px Arial'; ctx.textAlign = 'center'; ctx.fillText('FUEL', 0, 2);
     ctx.fillStyle = '#263d3a'; ctx.fillRect(-4, -car.height / 2 + 5, 8, 5);
   }
-  if (car.bmw) {
+  if (car.rogue) {
     ctx.save(); ctx.translate(0, 1);
     ctx.fillStyle = '#101818'; ctx.beginPath(); ctx.arc(0, 0, 9.5, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#f5f7f2'; ctx.beginPath(); ctx.arc(0, 0, 7.7, 0, Math.PI * 2); ctx.fill();
-    ctx.save(); ctx.beginPath(); ctx.arc(0, 0, 6.8, 0, Math.PI * 2); ctx.clip();
-    ctx.fillStyle = '#1f5eaa'; ctx.fillRect(-7, -7, 7, 7); ctx.fillRect(0, 0, 7, 7);
-    ctx.restore();
-    ctx.strokeStyle = '#101818'; ctx.lineWidth = .7; ctx.beginPath(); ctx.moveTo(0, -7); ctx.lineTo(0, 7); ctx.moveTo(-7, 0); ctx.lineTo(7, 0); ctx.stroke();
-    ctx.fillStyle = '#f5f7f2'; ctx.font = '700 2.8px Arial, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('BMW', 0, -7.9);
+    ctx.fillStyle = '#ff9067'; ctx.beginPath(); ctx.moveTo(-5, -1); ctx.lineTo(1, -1); ctx.lineTo(1, -5); ctx.lineTo(7, 2); ctx.lineTo(1, 9); ctx.lineTo(1, 5); ctx.lineTo(-5, 5); ctx.closePath(); ctx.fill();
+    ctx.strokeStyle = '#f5f7f2'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(0, 0, 8, 0, Math.PI * 2); ctx.stroke();
+    ctx.fillStyle = '#f5f7f2'; ctx.font = '700 3px Arial, sans-serif'; ctx.textAlign = 'center'; ctx.fillText('SWERVE', 0, -10);
     ctx.restore();
   }
   ctx.restore();
