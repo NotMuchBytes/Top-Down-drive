@@ -29,6 +29,7 @@
               <h2 id="overlay-title">Drop into the lane.</h2>
               <p id="overlay-copy">Dodge the unpredictable swervers, collect stars, and keep your cool.</p>
               <button id="start-button">Start driving</button>
+              <p class="start-hint">Tap or click anywhere on the road to begin.</p>
             </div>
           </div>
         </div>
@@ -37,6 +38,12 @@
           <span><kbd>A</kbd><kbd>←</kbd> <kbd>D</kbd><kbd>→</kbd> Steer</span>
           <span><kbd>Space</kbd> Pause</span>
         </footer>
+        <div class="mobile-controls" aria-label="Touch controls">
+          <button class="touch-button" data-key="a" aria-label="Steer left">◀</button>
+          <button class="touch-button" data-key="w" aria-label="Accelerate">▲</button>
+          <button class="touch-button" data-key="d" aria-label="Steer right">▶</button>
+          <button class="touch-button pause-button" data-action="pause" aria-label="Pause">⏸</button>
+        </div>
       </section>
       <p class="tip">The road gets faster. Swervers get less predictable.</p>
     </main>
